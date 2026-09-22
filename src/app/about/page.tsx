@@ -43,11 +43,15 @@ export default function About() {
           <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             Dynamic shading façades must reconcile competing objectives — daylight, glare,
             thermal comfort and energy — while responding to what the occupant actually wants.
-            Full building-performance simulation (BPS) is far too slow for real-time control.
-            This demonstrator implements the complete pipeline proposed in the research: generate
-            labelled data from a physics-based simulator, train a deep-learning surrogate on that
-            data, deploy the surrogate inside a model-predictive controller (MPC), and let live
-            sensor feedback close the loop — including when the occupant overrides the baseline.
+            Full building-performance simulation (BPS) typically runs far slower than real time
+            — often minutes to hours for a single configuration — which makes direct use in an
+            online controller impractical. This demonstrator instead explores the surrogate
+            approach proposed in the research: generate labelled data from a physics-based
+            simulator, train a fast deep-learning surrogate on that data, deploy it inside a
+            model-predictive controller (MPC), and let simulated sensor feedback close the loop —
+            including when the occupant overrides the baseline. It is a working, deliberately
+            simplified illustration of that end-to-end idea rather than a replication of the full
+            research programme.
           </p>
         </section>
 
@@ -55,8 +59,8 @@ export default function About() {
           <h2 className="text-2xl font-semibold tracking-tight">1 · The problem and the physics</h2>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             The test case is a single east-facing office module in Wellington, NZ (41.3° S),
-            simulated for a summer midday: an 8 m² glazed façade facing a 40 m² floor plate,
-            natural cross-ventilation driven by stack effect, and a capacity-limited HVAC plant
+            simulated for a summer day: an 8 m² glazed façade facing a 40 m² floor plate,
+            natural (stack-effect) ventilation, and a capacity-limited HVAC plant
             (4.5 kW) with separate heating and cooling coils. The shading configuration has three
             actuators — blind deployment, slat angle, and vent opening — whose non-linear combined
             effects on daylight, glare, comfort and energy cannot be captured by simple rules.
@@ -165,8 +169,8 @@ export default function About() {
             against fresh observations of the operating state, the chosen configuration is applied,
             and the realised response is recorded as telemetry. Because each surrogate call is
             sub-millisecond, the full re-optimisation — the same principle behind a receding-horizon
-            controller at scale — happens in real time, without a complete online simulation or
-            optimisation run at every step.
+            controller at scale — happens in real time, rather than re-running a full
+            building-performance simulation or optimisation pass at every step.
           </p>
         </section>
 
@@ -187,14 +191,14 @@ export default function About() {
             </span>
             <span className="text-zinc-500">→</span>
             <span className="rounded-lg bg-emerald-100 px-3 py-2 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200">
-              daylight target met → returns to baseline
+              daylight target met → controller returns to baseline
             </span>
           </div>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             Once the preference is satisfied, its weight decays and the controller guides the
             façade back toward the energy-efficient operating baseline — the &ldquo;override and
-            recover&rdquo; behaviour targeted in the research, achieved without requiring a
-            complete online optimisation process at every step.
+            recover&rdquo; behaviour targeted in the research, achieved by trusting the surrogate
+            instead of re-running a full optimisation at every step.
           </p>
         </section>
 
