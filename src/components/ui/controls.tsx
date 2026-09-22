@@ -20,10 +20,10 @@ export function Slider({
   return (
     <label className="block">
       <div className="mb-1.5 flex items-baseline justify-between">
-        <span className="text-xs font-medium text-zinc-600 dark:text-zinc-300">
+        <span className="text-[13px] font-medium text-zinc-600 dark:text-zinc-300">
           {label}
         </span>
-        <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="font-mono text-[13px] text-zinc-600 dark:text-zinc-400">
           {format ? format(value) : value.toFixed(2)}
         </span>
       </div>
@@ -54,7 +54,7 @@ export function Toggle({
     <button
       type="button"
       onClick={() => onChange(!checked)}
-      className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+      className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors ${
         checked
           ? "border-sky-600 bg-sky-600 text-white"
           : "border-zinc-300 bg-transparent text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"

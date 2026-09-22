@@ -50,18 +50,18 @@ export default function Home() {
               ◫
             </span>
             <div>
-              <div className="text-sm font-semibold tracking-tight">ClimaFaçade</div>
-              <div className="text-[10px] text-zinc-400">
+              <div className="text-base font-semibold tracking-tight">ClimaFaçade</div>
+              <div className="text-xs text-zinc-500">
                 closed-loop adaptive shading · surrogate + MPC
               </div>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <span
-              className={`hidden items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium sm:flex ${
+              className={`hidden items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium sm:flex ${
                 model
                   ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-                  : "bg-zinc-100 text-zinc-500 dark:bg-zinc-800"
+                  : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800"
               }`}
             >
               <span
@@ -73,7 +73,7 @@ export default function Home() {
             </span>
             <Link
               href="/about"
-              className="rounded-full border border-zinc-200 px-3 py-1 text-[11px] font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-300"
+              className="rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-300"
             >
               How it works
             </Link>
@@ -84,16 +84,16 @@ export default function Home() {
       <main className="mx-auto max-w-7xl space-y-5 px-5 py-6">
         <section className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-3xl font-semibold tracking-tight">
               An adaptive façade that balances comfort, daylight, glare and energy
             </h1>
-            <p className="mt-1 max-w-2xl text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-2 max-w-2xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
               A deep-learning surrogate is trained in your browser on building-performance
               simulation data, then deployed inside a model-predictive controller that re-optimises
               the shading configuration in closed loop — responding in real time to the occupant.
             </p>
           </div>
-          <div className="flex items-center gap-3 text-xs">
+          <div className="flex items-center gap-3 text-[13px]">
             <div className="rounded-lg bg-zinc-100 px-3 py-2 font-mono dark:bg-zinc-900">
               <span className="text-zinc-400">clock </span>
               <span className="font-semibold">{localClock(env.hour)}</span>
@@ -141,11 +141,11 @@ export default function Home() {
               subtitle="Simulated sensor feedback keeps the loop closed"
               badge={
                 override > 0 ? (
-                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700 dark:bg-amber-900/60 dark:text-amber-300">
+                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-900/60 dark:text-amber-300">
                     occupant override · {Math.ceil(override)}s
                   </span>
                 ) : (
-                  <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                  <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
                     energy-efficient baseline
                   </span>
                 )
@@ -159,7 +159,7 @@ export default function Home() {
               subtitle="Surrogate-predicted vs simulated response"
             >
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="space-y-1.5 text-xs">
+                <div className="space-y-1.5 text-[13px]">
                   {[
                     {
                       k: "Shade deployment",
@@ -178,7 +178,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="space-y-1.5 text-xs">
+                <div className="space-y-1.5 text-[13px]">
                   {[
                     {
                       k: "Surrogate predicts",
@@ -197,7 +197,7 @@ export default function Home() {
                       key={r.k}
                       className="flex items-center justify-between gap-2 rounded-lg bg-zinc-50 px-3 py-1.5 dark:bg-zinc-800/60"
                     >
-                      <span className="shrink-0 text-zinc-400">{r.k}</span>
+                      <span className="shrink-0 text-zinc-500">{r.k}</span>
                       <span className="truncate font-mono font-medium">{r.v}</span>
                     </div>
                   ))}
@@ -229,7 +229,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="mx-auto max-w-7xl px-5 py-6 text-center text-[11px] text-zinc-400">
+      <footer className="mx-auto max-w-7xl px-5 py-6 text-center text-xs text-zinc-500">
         Research demonstrator — surrogate neural network + model predictive control for adaptive
         building façades. All computation runs locally in your browser.
       </footer>

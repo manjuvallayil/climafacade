@@ -34,7 +34,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
     <Card title="Closed-loop performance" subtitle="Recorded telemetry across control steps">
       <div className="grid gap-4 lg:grid-cols-2">
         <div>
-          <div className="mb-1 flex justify-between text-[10px] uppercase tracking-wide text-zinc-400">
+          <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
             <span>HVAC energy — W (cooling / heating)</span>
           </div>
           <div className="h-32">
@@ -52,7 +52,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
         </div>
 
         <div>
-          <div className="mb-1 flex justify-between text-[10px] uppercase tracking-wide text-zinc-400">
+          <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
             <span>Work-plane illuminance — lux</span>
           </div>
           <div className="h-32">
@@ -70,7 +70,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
         </div>
 
         <div>
-          <div className="mb-1 flex justify-between text-[10px] uppercase tracking-wide text-zinc-400">
+          <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
             <span>Daylight glare — DGP</span>
           </div>
           <div className="h-32">
@@ -88,7 +88,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
         </div>
 
         <div>
-          <div className="mb-1 flex justify-between text-[10px] uppercase tracking-wide text-zinc-400">
+          <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
             <span>Thermal comfort — PMV</span>
           </div>
           <div className="h-32">
@@ -148,7 +148,7 @@ export function ControlLog({ history }: { history: ControlStep[] }) {
   return (
     <Card title="Actuation log" subtitle="Recent control steps — observe, predict, optimise, actuate">
       {tail.length === 0 ? (
-        <p className="py-6 text-center text-xs text-zinc-400">
+        <p className="py-6 text-center text-xs text-zinc-500">
           Waiting for the first control step…
         </p>
       ) : (
@@ -156,12 +156,12 @@ export function ControlLog({ history }: { history: ControlStep[] }) {
           {tail.map((s, i) => (
             <li
               key={history.length - i}
-              className="flex items-center gap-3 rounded-lg bg-zinc-50 px-3 py-2 text-[11px] dark:bg-zinc-800/60"
+              className="flex items-center gap-3 rounded-lg bg-zinc-50 px-3 py-2 text-xs dark:bg-zinc-800/60"
             >
-              <span className="font-mono text-zinc-400">{localClock(s.hour)}</span>
+              <span className="font-mono text-zinc-500">{localClock(s.hour)}</span>
               <div className="flex-1">
                 <span className="font-medium text-zinc-700 dark:text-zinc-200">{s.note}</span>
-                <span className="ml-2 text-zinc-400">
+                <span className="ml-2 text-zinc-500">
                   shade {Math.round(s.config.blindDeploy * 100)}% · slat {s.config.slatAngle}° · vent{" "}
                   {Math.round(s.config.ventOpen * 100)}%
                 </span>
