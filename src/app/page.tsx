@@ -73,7 +73,7 @@ export default function Home() {
             </span>
             <Link
               href="/about"
-              className="rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-300"
+              className="rounded-full bg-amber-100 px-4 py-1.5 text-xs font-semibold text-amber-800 shadow-sm transition-colors hover:bg-amber-200 dark:bg-amber-900/60 dark:text-amber-200 dark:hover:bg-amber-900/80"
             >
               How it works
             </Link>
@@ -107,6 +107,13 @@ export default function Home() {
           </div>
         </section>
 
+        <ModelTrainingPanel
+          training={training}
+          progress={trainProgress}
+          result={trainResult}
+          onRetrain={actions.retrain}
+        />
+
         <div className="grid gap-5 xl:grid-cols-12">
           <div className="space-y-5 xl:col-span-3">
             <EnvironmentPanel
@@ -126,12 +133,6 @@ export default function Home() {
               onGhi={actions.setManualGhi}
               occupancy={sim.occupancy}
               onOccupancy={actions.setOccupancy}
-            />
-            <ModelTrainingPanel
-              training={training}
-              progress={trainProgress}
-              result={trainResult}
-              onRetrain={actions.retrain}
             />
           </div>
 

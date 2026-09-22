@@ -20,15 +20,15 @@ function LossChart({ result }: { result: TrainResult }) {
     val: Number(h.valLoss.toExponential(3)),
   }));
   return (
-    <div className="h-36">
+    <div className="h-56">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
+        <LineChart data={data} margin={{ top: 4, right: 16, bottom: 0, left: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.25)" />
-          <XAxis dataKey="epoch" tick={{ fontSize: 10 }} stroke="#94a3b8" />
+          <XAxis dataKey="epoch" tick={{ fontSize: 11 }} stroke="#94a3b8" />
           <YAxis
-            tick={{ fontSize: 10 }}
+            tick={{ fontSize: 11 }}
             stroke="#94a3b8"
-            width={64}
+            width={72}
             tickFormatter={(v) => v.toExponential(0)}
           />
           <Tooltip
@@ -71,8 +71,8 @@ export function ModelTrainingPanel({
 
   return (
     <Card
-      title="Surrogate model"
-      subtitle="Neural network trained in-browser on simulation data"
+      title="Surrogate model — the intelligence inside the controller"
+      subtitle="Deep-learning proxy for building-performance simulation, trained in your browser and deployed in closed loop"
       badge={
         result ? (
           <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:bg-emerald-900/60 dark:text-emerald-300">
@@ -137,9 +137,11 @@ export function ModelTrainingPanel({
           </div>
 
           <p className="text-xs leading-relaxed text-zinc-500">
-            8 inputs → {result.history.length} epochs → 4 performance predictions.
-            Mean evaluation <b>{result.evalTimeUs.toFixed(0)} µs</b> per façade
-            configuration — compatible with sub-second closed-loop actuation.
+            Trained on {result.samples.toLocaleString()} simulation-generated scenarios — 8 operating
+            inputs mapping to 4 performance targets — and validated on held-out data (val R²{" "}
+            <b>{(result.r2 * 100).toFixed(1)}%</b>, MAE <b>{result.mae.toFixed(1)}</b>). Each façade
+            configuration is evaluated in <b>{result.evalTimeUs.toFixed(0)} µs</b>, compatible with
+            sub-second closed-loop re-optimisation in real time.
           </p>
         </div>
       )}
