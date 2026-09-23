@@ -35,7 +35,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
       <div className="grid gap-4 lg:grid-cols-2">
         <div>
           <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
-            <span>HVAC energy — W (cooling / heating)</span>
+            <span>HVAC energy · W (cooling / heating)</span>
           </div>
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
@@ -53,7 +53,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
 
         <div>
           <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
-            <span>Work-plane illuminance — lux</span>
+            <span>Work-plane illuminance · lux</span>
           </div>
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
@@ -71,7 +71,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
 
         <div>
           <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
-            <span>Daylight glare — DGP</span>
+            <span>Daylight glare · DGP</span>
           </div>
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
@@ -89,7 +89,7 @@ export function PerformanceCharts({ history }: { history: ControlStep[] }) {
 
         <div>
           <div className="mb-1 flex justify-between text-[11px] uppercase tracking-wide text-zinc-500">
-            <span>Thermal comfort — PMV</span>
+            <span>Thermal comfort · PMV</span>
           </div>
           <div className="h-32">
             <ResponsiveContainer width="100%" height="100%">
@@ -120,7 +120,7 @@ export function ParityPlot({ result }: { result: TrainResult }) {
   return (
     <Card
       title="Surrogate vs simulation"
-      subtitle="Held-out validation — predicted vs simulated illuminance"
+      subtitle="Held-out validation · predicted vs simulated illuminance"
     >
       <div className="h-56">
         <ResponsiveContainer width="100%" height="100%">
@@ -146,7 +146,7 @@ export function ParityPlot({ result }: { result: TrainResult }) {
 export function ControlLog({ history }: { history: ControlStep[] }) {
   const tail = history.slice(-8).reverse();
   return (
-    <Card title="Actuation log" subtitle="Recent control steps — observe, predict, optimise, actuate">
+    <Card title="Actuation log" subtitle="Recent control steps · observe, predict, optimise, actuate">
       {tail.length === 0 ? (
         <p className="py-6 text-center text-xs text-zinc-500">
           Waiting for the first control step…

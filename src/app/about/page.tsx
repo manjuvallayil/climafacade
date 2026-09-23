@@ -38,21 +38,35 @@ export default function About() {
       <main className="mx-auto max-w-3xl space-y-10 px-5 py-10">
         <section>
           <h1 className="text-4xl font-semibold tracking-tight">
-            How it works — machine learning for adaptive building façades
+            How it works · machine learning for adaptive building façades
           </h1>
           <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Dynamic shading façades must reconcile competing objectives — daylight, glare,
-            thermal comfort and energy — while responding to what the occupant actually wants.
+            Dynamic shading façades must reconcile competing objectives such as daylight, glare,
+            thermal comfort and energy, while responding to what the occupant actually wants.
             Full building-performance simulation (BPS) typically runs far slower than real time
-            — often minutes to hours for a single configuration — which makes direct use in an
+            (often minutes to hours for a single configuration), which makes direct use in an
             online controller impractical. This demonstrator instead explores the surrogate
             approach proposed in the research: generate labelled data from a physics-based
             simulator, train a fast deep-learning surrogate on that data, deploy it inside a
-            model-predictive controller (MPC), and let simulated sensor feedback close the loop —
+            model-predictive controller (MPC), and let simulated sensor feedback close the loop,
             including when the occupant overrides the baseline. It is a working, deliberately
             simplified illustration of that end-to-end idea rather than a replication of the full
             research programme.
           </p>
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4 text-[13px] leading-relaxed text-zinc-700 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-zinc-300">
+            <p className="font-semibold text-emerald-700 dark:text-emerald-300">
+              Plain-language summary
+            </p>
+            <p className="mt-1">
+              A slow but trustworthy physics simulator computes how each façade setting affects
+              daylight, glare, comfort, and energy. We run it thousands of times so a fast
+              neural-network surrogate can learn to copy it. The closed loop then runs on the
+              fast surrogate: each step the controller scores 60 candidate settings, picks the
+              one that best balances the occupant&apos;s preferences, the physics simulator
+              confirms the realised outcome, and the loop repeats. If the occupant overrides, the
+              controller honours it and later recovers to the energy-efficient baseline.
+            </p>
+          </div>
         </section>
 
         <section className="space-y-4">
@@ -62,7 +76,7 @@ export default function About() {
             simulated for a summer day: an 8 m² glazed façade facing a 40 m² floor plate,
             natural (stack-effect) ventilation, and a capacity-limited HVAC plant
             (4.5 kW) with separate heating and cooling coils. The shading configuration has three
-            actuators — blind deployment, slat angle, and vent opening — whose non-linear combined
+            actuators (blind deployment, slat angle, and vent opening) whose non-linear combined
             effects on daylight, glare, comfort and energy cannot be captured by simple rules.
           </p>
         </section>
@@ -73,8 +87,8 @@ export default function About() {
             A fast reference simulator encodes the governing physics: solar position and
             irradiance from Wellington&apos;s latitude and the time of day, glass and blind
             transmittance, solar gain, stack-effect ventilation, and the HVAC plant. Random
-            sampling across the full operating envelope — environmental conditions and façade
-            configurations alike — produces thousands of labelled scenarios, the stand-in for the
+            sampling across the full operating envelope (environmental conditions and façade
+            configurations alike) produces thousands of labelled scenarios, the stand-in for the
             building-performance simulation and multi-objective optimisation studies described in
             the research programme.
           </p>
@@ -103,8 +117,8 @@ export default function About() {
             </table>
           </div>
           <p className="text-sm text-zinc-500">
-            Eight inputs — five that describe the operating state, three that describe the façade
-            configuration — map to four performance targets: illuminance, daylight-glare
+            Eight inputs (five that describe the operating state, three that describe the façade
+            configuration) map to four performance targets: illuminance, daylight-glare
             probability, thermal comfort (PMV), and HVAC energy demand.
           </p>
         </section>
@@ -136,7 +150,7 @@ export default function About() {
           </div>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             Once fitted, the weights are serialised to a portable JSON format and executed by a
-            small hand-rolled inference routine — no deep-learning runtime required at deployment
+            small hand-rolled inference routine, with no deep-learning runtime required at deployment
             time. A single façade evaluation costs on the order of microseconds, which is what
             makes real-time re-optimisation feasible.
           </p>
@@ -146,8 +160,8 @@ export default function About() {
           <h2 className="text-2xl font-semibold tracking-tight">4 · Closed-loop MPC</h2>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             The surrogate makes online optimisation tractable. Every control step, the controller
-            scores the feasible grid of configurations — 5 blind settings × 4 slat angles × 3 vent
-            openings = 60 candidates — and selects the one minimising a weighted multi-objective
+            scores the feasible grid of configurations (5 blind settings × 4 slat angles × 3 vent
+            openings = 60 candidates) and selects the one minimising a weighted multi-objective
             cost:
           </p>
           <div className="rounded-xl border border-zinc-200 p-4 font-mono text-[13px] dark:border-zinc-800">
@@ -168,8 +182,8 @@ export default function About() {
             reachable actuation. Simulated sensor readings close the loop: each decision is taken
             against fresh observations of the operating state, the chosen configuration is applied,
             and the realised response is recorded as telemetry. Because each surrogate call is
-            sub-millisecond, the full re-optimisation — the same principle behind a receding-horizon
-            controller at scale — happens in real time, rather than re-running a full
+            sub-millisecond, the full re-optimisation (the same principle behind a receding-horizon
+            controller at scale) happens in real time, rather than re-running a full
             building-performance simulation or optimisation pass at every step.
           </p>
         </section>
@@ -178,8 +192,8 @@ export default function About() {
           <h2 className="text-2xl font-semibold tracking-tight">5 · Occupant agency and recovery</h2>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             This is the part that most directly mirrors the research focus on responsive control.
-            When the occupant expresses a desire for a different environmental state — more light,
-            less glare, warmer or cooler conditions, or a stronger energy-efficiency priority — the
+            When the occupant expresses a desire for a different environmental state (more light,
+            less glare, warmer or cooler conditions, or a stronger energy-efficiency priority), the
             request reshapes the objective function for the next-best action. The controller then
             picks the feasible configuration that best honours the expressed preference.
           </p>
@@ -196,7 +210,7 @@ export default function About() {
           </div>
           <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             Once the preference is satisfied, its weight decays and the controller guides the
-            façade back toward the energy-efficient operating baseline — the &ldquo;override and
+            façade back toward the energy-efficient operating baseline (the &ldquo;override and
             recover&rdquo; behaviour targeted in the research, achieved by trusting the surrogate
             instead of re-running a full optimisation at every step.
           </p>
@@ -206,8 +220,8 @@ export default function About() {
           <h2 className="text-2xl font-semibold tracking-tight">6 · Evaluation and robustness</h2>
           <ul className="list-disc space-y-1.5 pl-5 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             <li>
-              The surrogate is judged on held-out data via R² and mean absolute error — the
-              metrics shown on the dashboard — which quantify generalisation to previously unseen
+              The surrogate is judged on held-out data via R² and mean absolute error (the
+              metrics shown on the dashboard), which quantify generalisation to previously unseen
               operating conditions.
             </li>
             <li>

@@ -71,7 +71,7 @@ export function ModelTrainingPanel({
 
   return (
     <Card
-      title="Surrogate model — the intelligence inside the controller"
+      title="Surrogate model · the intelligence inside the controller"
       subtitle="Deep-learning proxy for building-performance simulation, trained in your browser and deployed in closed loop"
       badge={
         result ? (
@@ -137,8 +137,8 @@ export function ModelTrainingPanel({
           </div>
 
           <p className="text-xs leading-relaxed text-zinc-500">
-            Trained on {result.samples.toLocaleString()} simulation-generated scenarios — 8 operating
-            inputs mapping to 4 performance targets — and validated on held-out data (val R²{" "}
+            Trained on {result.samples.toLocaleString()} simulation-generated scenarios (8 operating
+            inputs mapping to 4 performance targets), validated on held-out data (val R²{" "}
             <b>{(result.r2 * 100).toFixed(1)}%</b>, MAE <b>{result.mae.toFixed(1)}</b>). Each façade
             configuration is evaluated in <b>{result.evalTimeUs.toFixed(0)} µs</b>, compatible with
             sub-second closed-loop re-optimisation in real time.

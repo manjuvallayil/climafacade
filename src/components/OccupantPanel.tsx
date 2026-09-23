@@ -50,7 +50,7 @@ export function OccupantPanel({
   return (
     <Card
       title="Occupant preferences"
-      subtitle="Express a desired indoor state — the controller models the next-best façade action"
+      subtitle="Express a desired indoor state · the controller models the next-best façade action"
       badge={
         <span
           className={`rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
@@ -127,7 +127,7 @@ export function OccupantPanel({
         <div className="flex items-center justify-between">
           <p className="text-xs leading-relaxed text-zinc-500">
             {overrideActive
-              ? "Preference shaping active — guidance returns to the energy-efficient baseline once satisfied."
+              ? "Preference shaping active · guidance returns to the energy-efficient baseline once satisfied."
               : "At the energy-efficient operating baseline."}
           </p>
           <button

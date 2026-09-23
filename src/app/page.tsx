@@ -90,7 +90,7 @@ export default function Home() {
             <p className="mt-2 max-w-2xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
               A deep-learning surrogate is trained in your browser on building-performance
               simulation data, then deployed inside a model-predictive controller that re-optimises
-              the shading configuration in closed loop — responding in real time to the occupant.
+              the shading configuration in closed loop, responding in real time to the occupant.
             </p>
           </div>
           <div className="flex items-center gap-3 text-[13px]">
@@ -231,7 +231,7 @@ export default function Home() {
       </main>
 
       <footer className="mx-auto max-w-7xl px-5 py-6 text-center text-xs text-zinc-500">
-        Research demonstrator — surrogate neural network + model predictive control for adaptive
+        Research demonstrator · surrogate neural network + model predictive control for adaptive
         building façades. All computation runs locally in your browser.
       </footer>
     </div>

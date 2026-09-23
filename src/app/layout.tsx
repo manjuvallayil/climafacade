@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ClimaFaçade — adaptive building façade control",
+  title: "ClimaFaçade · adaptive building façade control",
   description:
     "Interactive research demonstrator: a deep-learning surrogate trained on building-performance simulation data, deployed inside a model-predictive controller for real-time adaptive shading of building façades.",
 };
