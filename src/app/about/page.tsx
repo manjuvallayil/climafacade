@@ -38,7 +38,7 @@ export default function About() {
       <main className="mx-auto max-w-3xl space-y-10 px-5 py-10">
         <section>
           <h1 className="text-4xl font-semibold tracking-tight">
-            How it works · machine learning for adaptive building façades
+            Machine learning for adaptive building façades
           </h1>
           <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
             Dynamic shading façades must reconcile competing objectives such as daylight, glare,
@@ -51,20 +51,24 @@ export default function About() {
             model-predictive controller (MPC), and let simulated sensor feedback close the loop,
             including when the occupant overrides the baseline. It is a working, deliberately
             simplified illustration of that end-to-end idea rather than a replication of the full
-            research programme.
+            research programme. It is a working proof of concept, a deliberately simplified
+            single-zone example of the end-to-end idea, not a full implementation of the research
+            programme.
           </p>
           <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4 text-[13px] leading-relaxed text-zinc-700 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-zinc-300">
             <p className="font-semibold text-emerald-700 dark:text-emerald-300">
               Plain-language summary
             </p>
             <p className="mt-1">
-              A slow but trustworthy physics simulator computes how each façade setting affects
-              daylight, glare, comfort, and energy. We run it thousands of times so a fast
-              neural-network surrogate can learn to copy it. The closed loop then runs on the
-              fast surrogate: each step the controller scores 60 candidate settings, picks the
-              one that best balances the occupant&apos;s preferences, the physics simulator
-              confirms the realised outcome, and the loop repeats. If the occupant overrides, the
-              controller honours it and later recovers to the energy-efficient baseline.
+              A physics simulator works out how each façade setting affects daylight, glare,
+              comfort, and energy. It is accurate but slow, so it is run thousands of times to
+              &ldquo;train&rdquo; a small, fast model (a surrogate) that learns to give the same
+              answers almost instantly. From then on the closed loop runs on that fast surrogate:
+              each step the controller scores 60 candidate settings, picks the one that best
+              balances the occupant&apos;s preferences, the physics simulator confirms the realised
+              outcome, and the loop repeats. If the occupant overrides, the controller honours it
+              and later recovers to the energy-efficient baseline. All of this runs in your
+              browser on your own machine; nothing is sent to a server.
             </p>
           </div>
         </section>
